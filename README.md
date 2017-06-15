@@ -13,4 +13,5 @@ To run it:
 1. Download tis project
 2. Run `meteor npm install` in the project folder
 3. Run `meteor` in the project folder
+4. Access http://localhost:3000/ with user *admin@admin.com* and password *password*
 
