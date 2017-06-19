@@ -8,6 +8,12 @@ import container from '../../../modules/container';
 import Loading from '../components/Loading';
 
 class DataTablesList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.pageLimits = [10, 25, 50, 100];
+  }
+
   limitChange = (event) => {
     event.preventDefault();
 
@@ -15,7 +21,7 @@ class DataTablesList extends Component {
       pagination,
     } = this.props;
 
-    pagination.perPage(parseInt(event.target.value, 10));
+    pagination.perPage(parseInt(this.perPageSelect.value, 10));
   };
 
   searchItems = (event) => {
@@ -25,10 +31,13 @@ class DataTablesList extends Component {
       pagination,
     } = this.props;
 
-    const searchTerm = this.search.value;
+    const searchTerm = this.search.value.trim();
     pagination.filters(
       {
-        title: { $regex: searchTerm, $options: 'i' },
+        $or: [
+          { title: { $regex: searchTerm, $options: 'i' } },
+          { body: { $regex: searchTerm, $options: 'i' } },
+        ],
       }
     );
 
@@ -87,11 +96,10 @@ class DataTablesList extends Component {
               <div className="text-right">
                 <label htmlFor="per-page">
                   Per page:
-                  <select name="per-page" className="form-control input-sm" onChange={this.limitChange} >
-                    <option value="10">10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
+                  <select ref={(c) => { this.perPageSelect = c; }} name="per-page" defaultValue={pagination.perPage()} className="form-control input-sm" onChange={this.limitChange} >
+                    {this.pageLimits.map(limit => (
+                      <option key={limit} value={limit}>{limit}</option>
+                    ))}
                   </select>
                 </label>
               </div>

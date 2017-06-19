@@ -9,7 +9,8 @@ import EditDocument from '../pages/EditDocument';
 import ViewDocument from '../pages/ViewDocument';
 import Documents from '../pages/Documents';
 import NewDocument from '../pages/NewDocument';
-import DataTables from '../pages/DataTables';
+import ReactiveDataTable from '../pages/ReactiveDataTable';
+import NonReactiveDataTable from '../pages/NonReactiveDataTable';
 import Index from '../pages/Index';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
@@ -28,7 +29,8 @@ const App = () => (
           <PrivateRoute path="/documents/:_id/edit" component={EditDocument} />
           <PrivateRoute path="/documents/:_id" component={ViewDocument} />
           <PrivateRoute path="/documents" component={Documents} />
-          <PrivateRoute path="/datatables" component={DataTables} />
+          <PrivateRoute path="/reactive-datatable" component={ReactiveDataTable} />
+          <PrivateRoute path="/non-reactive-datatable" component={NonReactiveDataTable} />
           <Route path="/login" component={Login} />
           <Route path="/recover-password" component={RecoverPassword} />
           <Route path="/reset-password/:token" component={ResetPassword} />

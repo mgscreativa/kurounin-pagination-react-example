@@ -17,8 +17,11 @@ const AuthenticatedNavigation = ({ history }) => (
       <LinkContainer to="/documents">
         <NavItem eventKey={2} href="/documents">Documents</NavItem>
       </LinkContainer>
-      <LinkContainer to="/datatables">
-        <NavItem eventKey={4} href="/datatables">DataTables</NavItem>
+      <LinkContainer to="/reactive-datatable">
+        <NavItem eventKey={4} href="/reactive-datatable">Reactive DataTable</NavItem>
+      </LinkContainer>
+      <LinkContainer to="/non-reactive-datatable">
+        <NavItem eventKey={5} href="/non-reactive-datatable">Non Reactive DataTable</NavItem>
       </LinkContainer>
     </Nav>
     <Nav pullRight>

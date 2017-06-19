@@ -14,6 +14,7 @@ class DataTables extends Component {
       filters: {},
       sort: {},
       perPage: 10,
+      reactive: true,
       debug: true,
     });
   }
